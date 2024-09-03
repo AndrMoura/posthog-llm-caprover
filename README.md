@@ -4,7 +4,7 @@ This repository showcases how to easily install and deploy PostHog-LLM (an LLM f
 
 CapRover provides zillions methods to deploy your app, since PostHog-LLM contains multiple services that depend on each other, this repository uses what's known in CapRover as One-Click Apps.
 
-One click Apps are easy to use because it allows to deploy applications with *minimal configuration* and comes with a pre-configured template (`posthog-deploy.yml`) that contains all the services needed to run PostHog-LLM with all necessary configuration. You'll notice that the template file is much like a docker compose file where each service has its configuration. More information on One-Click Apps [here](https://caprover.com/docs/one-click-apps.html).
+One click Apps are easy to use because it allows to deploy applications with *minimal configuration* and comes with a pre-configured template (`posthogllm-deploy.yml`) that contains all the services needed to run PostHog-LLM with all necessary configuration. You'll notice that the template file is much like a docker compose file where each service has its configuration. More information on One-Click Apps [here](https://caprover.com/docs/one-click-apps.html).
 
 ## Requirements
 
@@ -31,7 +31,7 @@ Wait 60 seconds and navigate to `http://localhost:3000` and change your root dom
 
 ## Deploying PostHog-LLM
 
-To deploy PostHog-LLM, we'll use a CapRover template file (`posthogllm-deploy.yml`). The template file will be used to deploy several services required by PostHog.
+To deploy PostHog-LLM, we'll use a CapRover template file (`posthogllm-deploy.yml`). The template file will be used to deploy several services required by PostHog-LLM.
 
 Follow the steps below:
 
@@ -61,6 +61,9 @@ docker build -t you_user/helper .
 docker push your_user/helper
 ```
 
+# Videos
+
+Youtube video on how to install PostHog-LLM with CapRover [here](https://youtu.be/acPLzzzcui8) 👨‍🏫
 
 ## Troubleshooting
 
