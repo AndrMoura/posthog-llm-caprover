@@ -34,8 +34,18 @@ services:
         caproverExtra:
             notExposeAsWebApp: 'true'
             dockerfileLines:
-                - FROM andremoura/clickhouse:latest AS helper
-                - RUN sed -i "s|<host>zookeeper</host>|<host>srv-captain--$$cap_appname-zookeeper</host>|" /etc/clickhouse-server/config.xml
+                - FROM alpine AS build
+                - RUN apk add --no-cache curl tar
+                - WORKDIR /
+                - RUN mkdir -p "docker"
+                - RUN curl -L https://github.com/PostHog/posthog/tarball/c25b571388a9ad05d529a14daee8f49819280496 | tar -xz --wildcards --strip-components=2 -C "./" '*/posthog/idl/*'
+                - RUN curl -L https://github.com/PostHog/posthog/tarball/c25b571388a9ad05d529a14daee8f49819280496 | tar -xz --wildcards --strip-components=2 -C "docker" '*/docker/*'
+                - RUN sed -i "s|<host>zookeeper</host>|<host>srv-captain--$$cap_appname-zookeeper</host>|" /docker/clickhouse/config.xml
+                - FROM clickhouse/clickhouse-server:23.11.2.11-alpine
+                - COPY --from=build /docker/clickhouse/config.xml /etc/clickhouse-server/config.xml
+                - COPY --from=build /docker/clickhouse/users.xml /etc/clickhouse-server/users.xml
+                - COPY --from=build /docker/clickhouse/docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
+                - COPY --from=build /idl /idl
         depends_on:
             - $$cap_appname-kafka
             - $$cap_appname-zookeeper
