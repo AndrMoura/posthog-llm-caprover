@@ -1,6 +1,6 @@
 # PostHog-LLM Meets CapRover 🤝
 
-This repository showcases how to easily install and deploy PostHog-LLM (an LLM focused variant of PostHog) into CapRover. The process should really take just a few minutes. 🏃‍♀️. If you're looking for the original PostHog version check [here](https://github.com/AndrMoura/posthog-caprover).
+This repository showcases how to easily install and deploy [PostHog-LLM](https://github.com/postlang/posthog-llm) (an LLM focused variant of PostHog) into CapRover. The process should really take just a few minutes. 🏃‍♀️. If you're looking for the original PostHog version check [here](https://github.com/AndrMoura/posthog-caprover).
 
 CapRover provides zillions methods to deploy your app, since PostHog-LLM contains multiple services that depend on each other, this repository uses what's known in CapRover as One-Click Apps.
 
